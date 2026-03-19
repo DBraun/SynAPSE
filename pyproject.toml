@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synapse"
+version = "0.1.0"
+description = "FM-SynAPSE: audio-parameter shared embeddings for the Yamaha DX7 (JAX/Flax NNX)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "David Braun", email = "braun@ccrma.stanford.edu" }]
+keywords = ["dx7", "fm-synthesis", "gnn", "slap", "byol", "jax", "flax", "nnx", "audio", "synthesizer"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # absl.logging is used across the models.
+    "absl-py",
+    # Config binding via @argbind.bind() (DBraun fork with extra features).
+    "argbind-dbraun>=0.6.0",
+    # AudioTree is the encoders' input container: waveform/mel plus the DX7
+    # params/algorithm carried in its `extras` dict (1.0.0 renamed that from `metadata`).
+    "audiotree>=1.0.0",
+    # DX7 algorithm topology (mod_matrix / feedback_edge / carriers) + preset arrays.
+    "dexed-py",
+    # librosax provides the JAX mel/STFT front-ends used by the PANNs and SynthRL backbones.
+    "librosax>=0.1.2",
+    "einops>=0.8.1",
+    "flax>=0.12.7",
+    "jax>=0.10.2",
+    "numpy>=1.24",
+    # Weight save/load (SaveLoadModule): Orbax checkpoints, safetensors, YAML config.
+    "orbax-checkpoint>=0.11",
+    "safetensors",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+# Load a model straight from a HuggingFace repo id via from_pretrained.
+hf = ["huggingface_hub"]
+# Initialize the SynthRL audio backbone from the original pretrained PyTorch checkpoint.
+# Needed only for the one-time PyTorch -> safetensors conversion (SynthRLWrapper mode="fine_tune");
+# after the cached .safetensors exists, loading is torch-free.
+synthrl-pretrained = ["torch"]
+
+[project.urls]
+Homepage = "https://github.com/DBraun/SynAPSE"
+Repository = "https://github.com/DBraun/SynAPSE"
+
+[tool.uv.sources]
+# audiotree and librosax resolve from PyPI. Uncomment a path override to develop
+# against a sibling checkout.
+# audiotree = { path = "../audiotree", editable = true }
+# librosax = { path = "../librosax", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/synapse"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

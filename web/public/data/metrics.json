@@ -1,0 +1,16 @@
+{
+  "audio_to_preset": {
+    "sample_size": 4096,
+    "recall_at_1": 0.522216796875,
+    "recall_at_5": 0.810791015625,
+    "recall_at_10": 0.884521484375,
+    "recall_at_20": 0.93798828125
+  },
+  "preset_to_audio": {
+    "sample_size": 4096,
+    "recall_at_1": 0.528076171875,
+    "recall_at_5": 0.81494140625,
+    "recall_at_10": 0.88916015625,
+    "recall_at_20": 0.937255859375
+  }
+}

@@ -1,0 +1,63 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper (see preferred-citation)."
+title: "FM Synthesizer Audio-Parameter Shared Embeddings"
+abstract: >-
+  Given a target sound, finding the synthesizer preset that best reproduces it
+  remains a core problem in sound design.
+  Existing methods treat synthesis parameters as flat vectors, discarding the
+  signal routing and parameter interactions that produce audio.
+  We make two contributions.
+  First, to learn a representation of parameters including their signal routing,
+  we design a graph neural network whose message passing structure imitates FM
+  signal processing.
+  Second, we adapt the multimodal objective from SLAP to learn joint embeddings
+  of audio and FM synthesizer parameters, enabling preset retrieval from a
+  gallery.
+  We focus on the Yamaha DX7, where six identical sinusoid operators interact
+  according to one of 32 routing topologies.
+  Our graph encoder's message passing weights are shared across all nodes and
+  layers, enabling processing of arbitrary topologies of any size.
+  When every topology is seen during training, the DX7-GNN and two baselines
+  achieve strong audio-to-preset retrieval.
+  When some topologies are held out for testing, the DX7-GNN substantially
+  outperforms both baselines despite having the fewest parameters.
+  Our ablations further support the claim that imitating FM signal flow in a
+  parameter encoder improves generalization to unseen topologies.
+type: software
+authors:
+  - family-names: Braun
+    given-names: David
+    email: braun@ccrma.stanford.edu
+    affiliation: "Princeton University"
+    orcid: "https://orcid.org/0000-0001-8866-0756"
+  - family-names: Finkelstein
+    given-names: Adam
+    orcid: "https://orcid.org/0000-0001-9130-8411"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/DBraun/SynAPSE"
+url: "https://github.com/DBraun/SynAPSE"
+keywords:
+  - automatic synthesizer programming
+  - DX7
+  - FM synthesis
+  - graph neural networks
+  - multimodal learning
+preferred-citation:
+  type: conference-paper
+  title: "FM Synthesizer Audio-Parameter Shared Embeddings"
+  authors:
+    - family-names: Braun
+      given-names: David
+      orcid: "https://orcid.org/0000-0001-8866-0756"
+    - family-names: Finkelstein
+      given-names: Adam
+      orcid: "https://orcid.org/0000-0001-9130-8411"
+  year: 2026
+  month: 9
+  collection-title: "Proc. of the 29th Int. Conference on Digital Audio Effects (DAFx26)"
+  conference:
+    name: "Proc. of the 29th Int. Conference on Digital Audio Effects (DAFx26)"
+    website: "https://dafx26.mit.edu/"
+  location:
+    name: "Cambridge, MA, USA"

@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# Python (the repo root is the `synapse` package)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+.venv/
+venv/
+uv.lock
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ---------------------------------------------------------------------------
+# Web app (under web/)
+# ---------------------------------------------------------------------------
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# embedding and audio files (but keep embeddings.json and metrics.json — they are deployed to GitHub Pages)
+web/public/data/*
+!web/public/data/embeddings.json
+!web/public/data/metrics.json

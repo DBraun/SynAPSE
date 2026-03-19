@@ -1,0 +1,58 @@
+SynAPSE bundles JAX/Flax NNX ports of third-party code. Everything below is MIT
+licensed, same as SynAPSE itself, but the MIT terms require each copyright
+notice to travel with the code — so they are recorded here.
+
+--------------------------------------------------------------------------------
+SynthRL
+    https://github.com/argaaw/SynthRL
+    MIT License, Copyright (c) 2025 Wonchul Shin
+
+    Ported in:
+        src/synapse/backbones/synthrl.py
+        src/synapse/backbones/synthrl_layers.py
+        src/synapse/pretrained/synthrl.py
+        src/synapse/pretrained/synthrl_download.py
+
+    The upstream README licenses the released model checkpoints under MIT as
+    well, so the weights that `synthrl_download.py` fetches carry the same terms
+    as the code.
+
+    Reference:
+        Shin, W., & Lee, K. (2025). Cross-domain Synthesizer Sound Matching via
+        Reinforcement Learning. In Proceedings of the International Joint
+        Conference on Artificial Intelligence (IJCAI).
+
+--------------------------------------------------------------------------------
+Preset-Gen-VAE
+    https://github.com/gwendal-lv/preset-gen-vae
+    MIT License, Copyright (c) 2026 Gwendal Le Vaillant
+
+    Ported in:
+        src/synapse/backbones/preset_helper.py
+
+    This helper reaches SynAPSE through SynthRL, whose own NOTICE attributes the
+    Preset-Gen-VAE-derived portions to Gwendal Le Vaillant.
+
+--------------------------------------------------------------------------------
+PANNs (CNN14)
+    https://github.com/qiuqiangkong/audioset_tagging_cnn
+    MIT License, Copyright (c) 2018-2020 Qiuqiang Kong
+
+    Ported in:
+        src/synapse/backbones/cnn14.py
+        src/synapse/backbones/panns_blocks.py
+
+    Reference:
+        Kong, Q., Cao, Y., Iqbal, T., Wang, Y., Wang, W., & Plumbley, M. D.
+        (2020). PANNs: Large-Scale Pretrained Audio Neural Networks for Audio
+        Pattern Recognition. IEEE/ACM TASLP.
+
+--------------------------------------------------------------------------------
+ST-ITO / AFx-Rep
+    https://github.com/csteinmetz1/st-ito
+    Apache License 2.0 (no copyright line is filled in upstream;
+    attribution: Christian J. Steinmetz)
+
+    src/synapse/backbones/cnn14.py follows this project's stereo mid/side
+    variation of CNN14. SynAPSE trains that architecture from scratch and does
+    not distribute AFx-Rep's weights.
